@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+  <span>Laboratorio 1809</span>
+  <span class="espacio"></span>
+
+  <button mat-button routerLink="/">Inicio</button>
+  <button mat-button routerLink="/estudiantes">Estudiantes</button>
+
+  @if (authService.autenticado()) {
+    <span class="rol">Rol: {{ authService.esAdmin() ? 'Admin' : 'Usuario' }}</span>
+    <button mat-button (click)="authService.logout()">Cerrar sesión</button>
+  } @else {
+    <button mat-button routerLink="/login">Iniciar sesión</button>
+    <button mat-button routerLink="/registro">Registrarse</button>
+  }
+</mat-toolbar>
+
+<main class="contenedor">
+  <router-outlet></router-outlet>
+</main>

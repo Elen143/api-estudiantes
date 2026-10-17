@@ -1,0 +1,32 @@
+<div class="form-wrapper">
+  <mat-card class="form-card">
+    <mat-card-header>
+      <mat-card-title>Iniciar Sesión</mat-card-title>
+      <mat-card-subtitle>Ingresa tus credenciales para continuar</mat-card-subtitle>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <form (ngSubmit)="iniciarSesion()" class="form-grid">
+        
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Correo Electrónico</mat-label>
+          <input matInput type="email" [(ngModel)]="email" name="email" required>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" [(ngModel)]="clave" name="clave" required>
+        </mat-form-field>
+
+        @if (errorMensaje) {
+          <p style="color: red; width: 100%; text-align: center; margin-top: 0;">{{ errorMensaje }}</p>
+        }
+        
+        <div class="button-row center-button">
+          <button mat-raised-button color="primary" type="submit">Entrar al Sistema</button>
+        </div>
+        
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,45 @@
+<div class="form-wrapper">
+  <mat-card class="form-card">
+    <mat-card-header>
+      <mat-card-title>Crear Cuenta</mat-card-title>
+      <mat-card-subtitle>Regístrate para acceder al laboratorio</mat-card-subtitle>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <form (ngSubmit)="registrar()" class="form-grid">
+        
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Nombre Completo</mat-label>
+          <input matInput [(ngModel)]="nombre" name="nombre" required>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Correo Electrónico</mat-label>
+          <input matInput type="email" [(ngModel)]="email" name="email" required>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" [(ngModel)]="clave" name="clave" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Tipo de Rol</mat-label>
+          <mat-select [(ngModel)]="rol_id" name="rol_id">
+            <mat-option [value]="1">Administrador (Rol 1)</mat-option>
+            <mat-option [value]="2">Usuario Estándar (Rol 2)</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        @if (errorMensaje) {
+          <p style="color: red; width: 100%; text-align: center; margin-top: 0;">{{ errorMensaje }}</p>
+        }
+        
+        <div class="button-row center-button">
+          <button mat-raised-button color="accent" type="submit">Registrarse</button>
+        </div>
+        
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

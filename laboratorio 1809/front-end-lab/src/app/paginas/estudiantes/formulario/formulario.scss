@@ -1,0 +1,46 @@
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 2vh;
+}
+.form-card {
+  width: 100%;
+  max-width: 550px;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+}
+mat-card-header {
+  margin-bottom: 25px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  mat-card-title { font-size: 1.6rem; color: #2c3e50; font-weight: 500; margin-bottom: 5px; }
+  mat-card-subtitle { font-size: 0.95rem; color: #7f8c8d; }
+}
+.form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  
+  mat-form-field {
+    flex: 1 1 45%;
+    min-width: 200px;
+  }
+  .full-width {
+    flex: 1 1 100%;
+  }
+}
+.button-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  width: 100%;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #f0f0f0;
+  
+  button { padding: 5px 25px; letter-spacing: 0.5px; }
+}

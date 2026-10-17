@@ -1,0 +1,27 @@
+<mat-toolbar color="primary" class="navbar">
+  <span class="title">Laboratorio 1809</span>
+  <span class="spacer"></span>
+
+  <div class="nav-links">
+    <a
+      mat-button
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Inicio</a
+    >
+    <a mat-button routerLink="/estudiantes" routerLinkActive="active">Estudiantes</a>
+  </div>
+
+  @if (authService.autenticado()) {
+    <span class="role-badge">Rol: {{ authService.esAdmin() ? 'Admin' : 'Usuario' }}</span>
+    <button mat-raised-button color="warn" (click)="authService.logout()">Salir</button>
+  } @else {
+    <button mat-raised-button color="accent" routerLink="/login">Ingresar</button>
+    <button mat-stroked-button class="btn-registro" routerLink="/registro">Crear Cuenta</button>
+  }
+</mat-toolbar>
+
+<main class="main-container">
+  <router-outlet></router-outlet>
+</main>

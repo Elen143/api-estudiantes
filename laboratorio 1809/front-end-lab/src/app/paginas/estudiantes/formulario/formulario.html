@@ -1,0 +1,48 @@
+<div class="form-wrapper">
+  <mat-card class="form-card">
+    <mat-card-header>
+      <mat-card-title>{{ id ? 'Editar' : 'Nuevo' }} Estudiante</mat-card-title>
+      <mat-card-subtitle>Ingresa la información solicitada abajo</mat-card-subtitle>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <form (ngSubmit)="guardar()" class="form-grid">
+        
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input matInput [(ngModel)]="estudiante.nombre" name="nombre" required>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+          <mat-label>Apellido</mat-label>
+          <input matInput [(ngModel)]="estudiante.apellido" name="apellido" required>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Correo Electrónico</mat-label>
+          <input matInput type="email" [(ngModel)]="estudiante.email" name="email" required>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+          <mat-label>Carrera</mat-label>
+          <input matInput [(ngModel)]="estudiante.carrera" name="carrera">
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+          <mat-label>Edad</mat-label>
+          <input matInput type="number" [(ngModel)]="estudiante.edad" name="edad">
+        </mat-form-field>
+
+        @if (errorMensaje) {
+          <p style="color: red; width: 100%; text-align: center;">{{ errorMensaje }}</p>
+        }
+        
+        <div class="button-row">
+          <button mat-button type="button" (click)="router.navigate(['/estudiantes'])">Cancelar</button>
+          <button mat-raised-button color="primary" type="submit">Guardar Datos</button>
+        </div>
+        
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

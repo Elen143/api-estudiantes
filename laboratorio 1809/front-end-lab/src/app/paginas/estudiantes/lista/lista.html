@@ -1,0 +1,56 @@
+<div class="header-container">
+  <h2>Directorio de Estudiantes</h2>
+  
+  <!-- Solo el Admin (rol 1) verá este botón -->
+  @if (authService.esAdmin()) {
+    <button mat-raised-button color="primary" routerLink="/estudiantes/nuevo">
+      + Nuevo Estudiante
+    </button>
+  }
+</div>
+
+<mat-card class="table-card">
+  <div class="table-responsive">
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Email</th>
+          <th>Carrera</th>
+          <th>Edad</th> <!-- NUEVA COLUMNA -->
+          
+          <!-- La columna de acciones solo existe para el Admin -->
+          @if (authService.esAdmin()) {
+            <th>Acciones</th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        @for (est of estudiantes(); track est.id) {
+          <tr>
+            <td class="fw-500">{{ est.nombre }}</td>
+            <td>{{ est.apellido }}</td>
+            <td class="text-muted">{{ est.email }}</td>
+            <td><span class="badge">{{ est.carrera || 'N/A' }}</span></td>
+            <td>{{ est.edad || 'N/A' }}</td> <!-- NUEVO DATO -->
+            
+            <!-- Los botones de acción solo se muestran al Admin -->
+            @if (authService.esAdmin()) {
+              <td class="actions">
+                <button mat-button color="primary" [routerLink]="['/estudiantes', est.id]">Editar</button>
+                <button mat-button color="warn" (click)="eliminar(est.id)">Eliminar</button>
+              </td>
+            }
+          </tr>
+        } @empty {
+          <tr>
+            <td [colSpan]="authService.esAdmin() ? 6 : 5" class="empty-state">
+              No hay estudiantes registrados en la base de datos.
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</mat-card>
